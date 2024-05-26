@@ -15,6 +15,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
       <Image
         source={{ uri: product.image || defaultImage }}
         style={styles.image}
+        resizeMode='contain'
       />
       <Text style={styles.title}>{product.name}</Text>
       <Text style={styles.price}>${product.price}</Text>
@@ -25,9 +26,12 @@ export default ProductItem
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: '#dce4ff',
     padding: 10,
     borderRadius: 10,
+    // takes as much space as it can according to flatlist column number of item
+    flex: 1,
+    maxWidth: '50%', //does not let last single item to take whole width
   },
   title: {
     fontSize: 18,
