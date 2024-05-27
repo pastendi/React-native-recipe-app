@@ -14,6 +14,9 @@ const singleProduct = () => {
   const product = products.find((x) => x.id.toString() === id)
   if (!product) return <Text>Product not found</Text>
   const addToCart = () => {
+    if (!product) {
+      return
+    }
     addItem(product, selectedSize)
   }
 
@@ -42,7 +45,7 @@ const singleProduct = () => {
       </View>
 
       <Text style={styles.price}>Price: ${product.price}</Text>
-      <Button text='Add to cart' onPress={addToCart} />
+      <Button text='Add to cart' onPress={() => addToCart()} />
     </View>
   )
 }
